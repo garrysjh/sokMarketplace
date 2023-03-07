@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+  *{
+  padding: 0;
+  margin: 0;
+  }
+   ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  padding-right: 4rem;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.login {
+float: right;
+
+}
+h1 {
+text-align: center;
+}
+a {
+text-align: center;
+display: block;
+}
+  </style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
+    <li><a href="">About</a></li>
+    <li th:if="${LoginID == 0}" class="login"><a href="/login">Login</a></li>
+    <li th:if="${LoginID == 0}" class="login"><a href="/register">Register</a></li>
+    <li th:if="${LoginID !=0}" class="login"><a href="/logout">Logout</a></li>
+    <li th:if="${LoginID !=0}" class="login"><a href="/cart">Cart</a></li>
+</ul>
+<h1>Categories</h1>
+<a href="/admin">Admin Home</a>
+<div class="container">
+    <table class="table table-bordered table-hover" >
+        <thead class="table-dark">
+        <tr>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category, iStat : ${categories}">
+            <td th:text="${category.id}">ID</td>
+            <td th:text="${category.name}">Name</td>
+            <td th:text="${category.description}">Description</td>
+            <td><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <p><a href="/admin/categories/add">Add new category</a></p>
+    </div>
+</body>
+</html>

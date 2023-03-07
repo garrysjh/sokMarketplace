@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+  <style>
+  *{
+  padding: 0;
+  margin: 0;
+  }
+   ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  padding-right: 4rem;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.login {
+float: right;
+
+}
+.center {
+text-align: center;
+}
+  </style>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="#news">Products</a></li>
+  <li><a href="">About</a></li>
+  <li th:if="${LoginID == 0}" class="login"><a href="/login">Login</a></li>
+  <li th:if="${LoginID == 0}" class="login"><a href="/register">Register</a></li>
+  <li th:if="${LoginID !=0}" class="login"><a href="/logout">Logout</a></li>
+  <li th:if="${LoginID !=0}" class="login"><a href="/cart">Cart</a></li>
+</ul>
+<div class="center">
+  <h1>Add Category</h1>
+<a href="/admin">Admin Home</a>
+</div>
+<form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
+  <input type="hidden" name="id" th:field="*{id}">
+  <div class="form-group center">
+    <label>Name</label>
+    <input type="text" required th:field="*{name}" name="name">
+      <label>Description</label>
+      <input type="text" th:field="*{description}" name="description">
+      <button type="submit" id="submitButton" >Submit</button>
+      <input type="reset" id="resetButton" th:value="Reset"/>
+  </div>
+</form>
+</body>
+</html>

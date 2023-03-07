@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+  *{
+  padding: 0;
+  margin: 0;
+  }
+   ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  padding-right: 4rem;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.login {
+float: right;
+
+}
+h1 {
+text-align: center;
+}
+p {
+text-align: center;
+margin-top: 3%;
+}
+  </style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="#news">Products</a></li>
+    <li><a href="">About</a></li>
+    <li th:if="${LoginID == 0}" class="login"><a href="/login">Login</a></li>
+    <li th:if="${LoginID == 0}" class="login"><a href="/register">Register</a></li>
+    <li th:if="${LoginID !=0}" class="login"><a href="/logout">Logout</a></li>
+    <li th:if="${LoginID !=0}" class="login"><a href="/cart">Cart</a></li>
+</ul>
+<div>
+    <br>
+    <h1>Admin Home Page</h1>
+    <p>
+        <a href="/admin/categories">Categories</a>
+        <br>
+        <a href="/admin/products">Products</a>
+        <br>
+        <a href="/users">List of users registered</a>
+    </p>
+</div>
+</body>
+</html>
