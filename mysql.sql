@@ -24,12 +24,12 @@ phone varchar(50),
 isAdmin boolean
 );
 create table user_cart(
-id int,
+id int NOT NULL auto_increment primary key,
 user_id int,
 purchased boolean
 );
 create table cart_items(
-id int,
+id int NOT NULL auto_increment primary key,
 product_id int,
 quantity int,
 cart_id int
